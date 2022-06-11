@@ -11,9 +11,8 @@
 </head>
 
 <body>
-    <header class="header">
-        <h1>A Simple Calculator</h1>
-    </header>
+    <!-- <header class="header">
+    </header> -->
     <main class="calc">
         <div class="calc_display">
             <div class="operation">
@@ -24,11 +23,11 @@
             </div>
         </div>
         <div class="buttons">
-            <div id="decimal">
-                <h4></h4>
-            </div>
             <div id="clear">
-                <h4 data-operation="clear">CLR</h4>
+                <h4 data-operation="clear">AC</h4>
+            </div>
+            <div id="decimal">
+                <h4>.</h4>
             </div>
             <div id="divide">
                 <h4 data-operation="divide">/</h4>
@@ -60,6 +59,9 @@
             <div id="add">
                 <h4 data-operation="add">+</h4>
             </div>
+            <div id="zero">
+                <h4>0</h4>
+            </div>
             <div id="one">
                 <h4>1</h4>
             </div>
@@ -71,9 +73,6 @@
             </div>
             <div id="equals">
                 <h4 data-operation="equals">=</h4>
-            </div>
-            <div id="zero">
-                <h4>0</h4>
             </div>
         </div>
     </main>
