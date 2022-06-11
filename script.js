@@ -42,8 +42,15 @@ const multiply = (a, b) => {
   console.log(valid ? formatter.format(a * b) : "Error");
 };
 const operate = (op, x, y) => {
-  let result = `${op(x, y)}`;
+  let result = op(x, y);
   console.log(result);
+};
+
+const clearDisplay = (evt) => {
+  lhsOperand = "";
+  rhsOperand = "";
+  operator = null;
+  operationDisplay.textContent = "";
 };
 
 const populateDisplay = (evt) => {
@@ -109,5 +116,5 @@ equals.addEventListener("click", (evt) => {
   operate(operator, parseInt(lhsOperand), parseInt(rhsOperand));
 });
 clear.addEventListener("click", (evt) => {
-  // clearDisplay()
+  clearDisplay(evt);
 });
