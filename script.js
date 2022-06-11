@@ -81,7 +81,7 @@ const populateDisplay = (evt) => {
     operator = evt.target.dataset.operation;
     let str = document.createTextNode(answer);
     resultDisplay.appendChild(str);
-  } else if (!isNaN(text) && operator !== null) {
+  } else if ((!isNaN(text) || text == ".") && operator !== null) {
     rhsOperand += text;
     console.log(lhsOperand, operator, rhsOperand);
   }
