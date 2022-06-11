@@ -67,7 +67,7 @@ const operate = (fn, x, y) => {
   }
 };
 
-const showAnswer = () => {};
+// const showAnswer = () => {};
 
 const clearDisplay = (evt) => {
   lhsOperand = "";
@@ -137,7 +137,6 @@ multiplyKey.addEventListener("click", (evt) => {
 });
 equals.addEventListener("click", (evt) => {
   operate(operator, parseInt(lhsOperand), parseInt(rhsOperand));
-  showAnswer();
 });
 clear.addEventListener("click", (evt) => {
   clearDisplay(evt);
