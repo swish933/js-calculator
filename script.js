@@ -70,11 +70,11 @@ const clearDisplay = (evt) => {
 
 const populateDisplay = (evt) => {
   let text = evt.target.firstChild.nodeValue;
-  if (isNaN(text) && operator == null) {
+  if (isNaN(text) && text !== "." && operator == null) {
     operator = evt.target.dataset.operation;
-    lhsOperand = parseInt(operationDisplay.textContent);
-  } else if (isNaN(text) && operator !== null) {
-    operate(operator, parseInt(lhsOperand), parseInt(rhsOperand));
+    lhsOperand = parseFloat(operationDisplay.textContent);
+  } else if (isNaN(text) && text !== "." && operator !== null) {
+    operate(operator, parseFloat(lhsOperand), parseFloat(rhsOperand));
     clearDisplay();
     lhsOperand = answer;
     text = "";
@@ -135,7 +135,8 @@ multiplyKey.addEventListener("click", (evt) => {
   populateDisplay(evt);
 });
 equals.addEventListener("click", (evt) => {
-  operate(operator, parseInt(lhsOperand), parseInt(rhsOperand));
+  answer = "";
+  operate(operator, parseFloat(lhsOperand), parseFloat(rhsOperand));
   let str = document.createTextNode(answer);
   resultDisplay.textContent = "";
   resultDisplay.appendChild(str);
