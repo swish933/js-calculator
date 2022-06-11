@@ -1,0 +1,85 @@
+/* :root {
+  --fs-xl: "";
+  --fs-600: "";
+  --fs-500: "";
+  --fs-400: "";
+  --bg-dark: "";
+  --bg-lightgray: "";
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #6e70ac;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.calc {
+  width: 20rem;
+  border: 1px solid darkgoldenrod;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.calc_display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0.5rem;
+}
+
+.calc_display > div {
+  padding: 1rem 0rem;
+}
+
+.calc_display .operation {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  border: 1px solid crimson;
+}
+
+.calc_display .result {
+  display: none;
+  border: 1px solid crimson;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+#decimal {
+  visibility: hidden;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 2px solid cornflowerblue;
+  border-top-left-radius: 8%;
+  border-top-right-radius: 8%;
+  gap: 0.75rem;
+  padding: 1.4rem 1.1rem;
+}
+
+.buttons > div {
+  border: 2px solid darkgrey;
+  border-radius: 9px;
+  flex: 1 0 55px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* .buttons > div:hover {} */
+
+h4 {
+  /* border: 1px solid darkgray; */
+  padding: 0.5rem 0;
+  text-align: center;
+}
