@@ -20,6 +20,7 @@ const clear = document.querySelector("#clear");
 let lhsOperand = "";
 let rhsOperand = "";
 let operator = null;
+let answer = "";
 
 const formatter = new Intl.NumberFormat("en-GB");
 const validateInput = (a, b) => {
@@ -27,30 +28,53 @@ const validateInput = (a, b) => {
 };
 const add = (a, b) => {
   let valid = validateInput(a, b);
-  console.log(valid ? formatter.format(a + b) : "Error");
+  answer = valid ? formatter.format(a + b) : "Error";
+  let str = document.createTextNode(answer);
+  resultDisplay.appendChild(str);
 };
 const divide = (a, b) => {
   let valid = validateInput(a, b);
-  console.log(valid ? formatter.format(a / b) : "Error");
+  answer = valid ? formatter.format(a / b) : "Error";
+  let str = document.createTextNode(answer);
+  resultDisplay.appendChild(str);
 };
 const subtract = (a, b) => {
   let valid = validateInput(a, b);
-  console.log(valid ? formatter.format(a - b) : "Error");
+  answer = valid ? formatter.format(a - b) : "Error";
+  let str = document.createTextNode(answer);
+  resultDisplay.appendChild(str);
 };
 const multiply = (a, b) => {
   let valid = validateInput(a, b);
-  console.log(valid ? formatter.format(a * b) : "Error");
+  answer = valid ? formatter.format(a * b) : "Error";
+  let str = document.createTextNode(answer);
+  resultDisplay.appendChild(str);
 };
-const operate = (op, x, y) => {
-  let result = op(x, y);
-  console.log(result);
+const operate = (fn, x, y) => {
+  switch (fn) {
+    case "multiply":
+      multiply(x, y);
+      break;
+    case "divide":
+      divide(x, y);
+      break;
+    case "add":
+      add(x, y);
+      break;
+    case "subtract":
+      subtract(x, y);
+      break;
+  }
 };
+
+const showAnswer = () => {};
 
 const clearDisplay = (evt) => {
   lhsOperand = "";
   rhsOperand = "";
   operator = null;
   operationDisplay.textContent = "";
+  resultDisplay.textContent = "";
 };
 
 const populateDisplay = (evt) => {
@@ -58,10 +82,9 @@ const populateDisplay = (evt) => {
   if (isNaN(text) && operator == null) {
     lhsOperand = parseInt(operationDisplay.textContent);
     operator = evt.target.dataset.operation;
-    // console.log(lhsOperand, operator);
   } else if (operator !== null) {
     rhsOperand += text;
-    // console.log(rhsOperand);
+    console.log(lhsOperand, operator, rhsOperand);
   }
   let str = document.createTextNode(text);
   operationDisplay.appendChild(str);
@@ -114,6 +137,7 @@ multiplyKey.addEventListener("click", (evt) => {
 });
 equals.addEventListener("click", (evt) => {
   operate(operator, parseInt(lhsOperand), parseInt(rhsOperand));
+  showAnswer();
 });
 clear.addEventListener("click", (evt) => {
   clearDisplay(evt);
