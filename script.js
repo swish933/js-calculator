@@ -26,29 +26,22 @@ const formatter = new Intl.NumberFormat("en-GB");
 const validateInput = (a, b) => {
   return isNaN(a) || isNaN(b) ? false : true;
 };
+
 const add = (a, b) => {
   let valid = validateInput(a, b);
   answer = valid ? formatter.format(a + b) : "Error";
-  let str = document.createTextNode(answer);
-  resultDisplay.appendChild(str);
 };
 const divide = (a, b) => {
   let valid = validateInput(a, b);
   answer = valid ? formatter.format(a / b) : "Error";
-  let str = document.createTextNode(answer);
-  resultDisplay.appendChild(str);
 };
 const subtract = (a, b) => {
   let valid = validateInput(a, b);
   answer = valid ? formatter.format(a - b) : "Error";
-  let str = document.createTextNode(answer);
-  resultDisplay.appendChild(str);
 };
 const multiply = (a, b) => {
   let valid = validateInput(a, b);
   answer = valid ? formatter.format(a * b) : "Error";
-  let str = document.createTextNode(answer);
-  resultDisplay.appendChild(str);
 };
 const operate = (fn, x, y) => {
   switch (fn) {
@@ -67,8 +60,6 @@ const operate = (fn, x, y) => {
   }
 };
 
-// const showAnswer = () => {};
-
 const clearDisplay = (evt) => {
   lhsOperand = "";
   rhsOperand = "";
@@ -77,12 +68,22 @@ const clearDisplay = (evt) => {
   resultDisplay.textContent = "";
 };
 
+const clearAnswer = () => {};
+
 const populateDisplay = (evt) => {
   let text = evt.target.firstChild.nodeValue;
   if (isNaN(text) && operator == null) {
-    lhsOperand = parseInt(operationDisplay.textContent);
     operator = evt.target.dataset.operation;
-  } else if (operator !== null) {
+    lhsOperand = parseInt(operationDisplay.textContent);
+  } else if (isNaN(text) && operator !== null) {
+    operate(operator, parseInt(lhsOperand), parseInt(rhsOperand));
+    clearDisplay();
+    lhsOperand = answer;
+    text = "";
+    operator = evt.target.dataset.operation;
+    let str = document.createTextNode(answer);
+    resultDisplay.appendChild(str);
+  } else if (!isNaN(text) && operator !== null) {
     rhsOperand += text;
     console.log(lhsOperand, operator, rhsOperand);
   }
@@ -137,6 +138,9 @@ multiplyKey.addEventListener("click", (evt) => {
 });
 equals.addEventListener("click", (evt) => {
   operate(operator, parseInt(lhsOperand), parseInt(rhsOperand));
+  let str = document.createTextNode(answer);
+  resultDisplay.textContent = "";
+  resultDisplay.appendChild(str);
 });
 clear.addEventListener("click", (evt) => {
   clearDisplay(evt);

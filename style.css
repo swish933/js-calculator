@@ -70,6 +70,7 @@ body {
 
 .buttons > div {
   border: 2px solid darkgrey;
+  user-select: none;
   border-radius: 9px;
   flex: 1 0 55px;
   font-size: 1.5rem;
@@ -77,7 +78,9 @@ body {
   overflow: hidden;
 }
 
-/* .buttons > div:hover {} */
+.buttons > div:hover {
+  border: 2px solid crimson;
+}
 
 h4 {
   /* border: 1px solid darkgray; */
