@@ -68,8 +68,6 @@ const clearDisplay = (evt) => {
   resultDisplay.textContent = "";
 };
 
-const clearAnswer = () => {};
-
 const populateDisplay = (evt) => {
   let text = evt.target.firstChild.nodeValue;
   if (isNaN(text) && operator == null) {
